@@ -33,10 +33,10 @@ while True:
     take_ans(Q4, str(30))
     take_ans(Q5, str(12))
     try:
-        with open("highscore.txt", "r") as f:
+        with open("Beginner useful/highscore.txt", "r") as f:
             highscore = f.read()
         if highscore == "":
-            with open("highscore.txt", "w") as f:
+            with open("Beginner useful/highscore.txt", "w") as f:
                 f.write(str(score))
             print(f"New highscore! {score}")
             break
@@ -44,7 +44,7 @@ while True:
             highscore = int(highscore)
             if score > highscore:
                 print(f"New High score! {score}")
-                with open("highscore.txt", "w") as f:
+                with open("Beginner useful/highscore.txt", "w") as f:
                     f.write(str(score))
             else:
                 print(f"Score: {score} out of {total_score}")
@@ -52,7 +52,7 @@ while True:
             break
     except FileNotFoundError:
         print("File not found")
-        with open("highscore.txt", "w") as f:
+        with open("Beginner useful/highscore.txt", "w") as f:
             f.write(str(score))
         print(f"New highscore! {score}")
         print("New file created")

@@ -18,6 +18,8 @@ def take_info():
             print("Please enter correct info type.")
 
 
+file_path = "Beginner useful/student_info.txt"
+
 while True:
     print("To [E]xit.")
     try:
@@ -30,7 +32,7 @@ while True:
             name, age, id, courses = take_info()
             personal_info = {"Name: ": name.title(), "Age:": age}
             number_of_courses = len(courses)
-            with open("student_info.txt", "a+") as f:
+            with open(file_path, "a+") as f:
                 f.seek(0)
                 all_info = f.read()
                 if id in all_info:
@@ -54,7 +56,7 @@ while True:
                 id = input("Enter your ID number: ")
                 if id.lower().strip() == "e":
                     break
-                with open("student_info.txt", "r") as f:
+                with open(file_path, "r") as f:
                     all_info = f.read()
                     if id in all_info:
                         f.seek(0)
@@ -63,7 +65,7 @@ while True:
                             if id in info:
                                 all_info_list.remove(info)
                         if not (id in all_info_list):
-                            with open("student_info.txt", "w") as f:
+                            with open(file_path, "w") as f:
                                 for info in all_info_list:
                                     f.write(info)
                             print(
@@ -74,7 +76,7 @@ while True:
                 id = input("Enter your ID number: ")
                 if id.lower().strip() == "e":
                     break
-                with open("student_info.txt", "r") as f:
+                with open(file_path, "r") as f:
                     all_info_list = f.readlines()
                 found = False
                 for idx, info in enumerate(all_info_list):
@@ -110,7 +112,7 @@ while True:
                             new_info = info[:course_start + 10] + \
                                 new_courses_str + info[course_end:]
                             all_info_list[idx] = new_info
-                            with open("student_info.txt", "w") as f:
+                            with open(file_path, "w") as f:
                                 f.writelines(all_info_list)
                             print(
                                 f"Courses {', '.join(remove_set)} unregistered from ID {id}.")
@@ -123,7 +125,7 @@ while True:
                 id = input("Enter your ID number: ")
                 if id.lower().strip() == "e":
                     break
-                with open("student_info.txt", "r") as f:
+                with open(file_path, "r") as f:
                     all_info_list = f.readlines()
                 found = False
                 for idx, info in enumerate(all_info_list):
@@ -138,7 +140,7 @@ while True:
                             new_info = info[:course_start + 10] + \
                                 "{}" + info[course_end:]
                             all_info_list[idx] = new_info
-                            with open("student_info.txt", "w") as f:
+                            with open(file_path, "w") as f:
                                 f.writelines(all_info_list)
                             print(f"All courses unregistered for ID {id}.")
                         except Exception as e:
@@ -151,7 +153,7 @@ while True:
                 "1-View one student\n2-View all students\n3-View all courses\n")
             if view_option == "1":
                 id = input("Enter your ID number: ")
-                with open("student_info.txt") as f:
+                with open(file_path, "r") as f:
                     all_info = f.read()
                     if id in all_info:
                         f.seek(0)
@@ -163,14 +165,14 @@ while True:
                     else:
                         print("ID not registered.")
             elif view_option == "2":
-                with open("student_info.txt") as f:
+                with open(file_path, "r") as f:
                     all_info_list = f.readlines()
                     print("All student Records:")
                     for i, info in enumerate(all_info_list):
                         print(f"{i}: {info}")
             elif view_option == "3":
                 id = input("Enter your ID number: ")
-                with open("student_info.txt", "a+") as f:
+                with open(file_path, "a+") as f:
                     f.seek(0)
                     all_info = f.read()
                     if id in all_info:
@@ -188,5 +190,5 @@ while True:
             print("Please enter correct action.")
     except FileNotFoundError:
         print("File not Found, Creating new file.")
-        with open("student_info.txt", "w") as f:
+        with open(file_path, "w") as f:
             f.write("")

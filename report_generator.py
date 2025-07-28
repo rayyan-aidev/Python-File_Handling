@@ -2,8 +2,8 @@ import json
 import csv
 import os
 print("Ths is the report generator.")
-file_path1 = "File_Handling/student_info.json"
-file_path2 = "File_Handling/student_marks.csv"
+file_path1 = "Beginner useful/student_info.json"
+file_path2 = "Beginner useful/student_marks.csv"
 while True:
     try:
         student_marks = []
@@ -95,9 +95,9 @@ while True:
             if not existing_data:
                 print("No student marks registered yet.")
                 continue
-            if not os.path.exists("File_Handling/Reports"):
-                os.makedirs("File_Handling/Reports")
-            report_path = f"File_Handling/Reports/{id}_report.txt"
+            if not os.path.exists("Beginner useful/Reports"):
+                os.makedirs("Beginner useful/Reports")
+            report_path = f"Beginner useful/Reports/{id}_report.txt"
             student_found = False
             for student in existing_data:
                 if student["ID"] == id:
