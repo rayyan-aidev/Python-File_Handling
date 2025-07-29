@@ -1,6 +1,6 @@
 # 📁 Python File Handling Projects
 
-A collection of beginner-to-intermediate Python projects that use file input/output to read, write, store, and manipulate data. These projects demonstrate how to persist user input, manage data across sessions, and simulate real-world applications like login systems, note-taking, and quizzes — all using `.txt` files and Python's standard libraries.
+A collection of beginner-to-intermediate Python projects that use file input/output to read, write, store, and manipulate data. These projects demonstrate how to persist user input, manage data across sessions, and simulate real-world applications like login systems, note-taking, and quizzes — Projects make use of '.txt', '.json' and '.csv' files and Python's standard libraries.
 
 ---
 
@@ -9,10 +9,10 @@ A collection of beginner-to-intermediate Python projects that use file input/out
 | Project Name | Description |
 |--------------|-------------|
 | 📝 **Note App** | Create, update, and delete notes saved in text files. |
-| 🔐 **Login System** | Simulates user login and registration using file-based credential storage. |
-| 🧾 **Report Generator** | Collects user data and creates formatted text reports. |
+| 🔐 **Login System** | Simulates user login and registration using json file-based credential storage. |
+| 🧾 **Report Generator** | Collects user data in json and csv and creates formatted text reports. |
 | 🎓 **Student Course Register** | Add, remove, and manage student-course data, saved persistently. |
-| ❓ **Quiz App (Updated)** | A quiz system that stores questions and tracks scores using files. |
+| ❓ **Quiz App (Updated)** | A quiz system that stores questions and tracks highscores using files. |
 
 ---
 
@@ -21,6 +21,7 @@ A collection of beginner-to-intermediate Python projects that use file input/out
 - Understand Python file I/O operations (`open()`, `read()`, `write()`, etc.)
 - Practice storing and retrieving persistent data
 - Use control flow, functions, and string manipulation with file data
+- Learn file handling with .txt, .json and .csv file types.
 - Build simple but practical CLI-based apps
 
 ---
