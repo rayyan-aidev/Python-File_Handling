@@ -52,3 +52,11 @@ A collection of beginner-to-intermediate Python projects that use file input/out
 **This project is licensed under the MIT License.**
 
 ---
+
+## 🔗 Let's connect!
+Check out more of my projects at: https://github.com/rayyan-aidev
+
+---
+
+## ⭐ Star Repo
+If you liked my projects please star my repository.
