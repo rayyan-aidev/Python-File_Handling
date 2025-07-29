@@ -82,42 +82,43 @@ while True:
                 for idx, info in enumerate(all_info_list):
                     if info.strip().startswith(f"{id}:"):
                         found = True
-
-                        course_start = info.find("'Courses':")
-                        if course_start == -1:
-                            print("No courses found for this student.")
-                            break
-                        course_end = info.find("-", course_start)
-                        course_set_str = info[course_start +
-                                              10:course_end].strip()
-                        # Improved parsing: handle empty set and formatting
-                        if course_set_str.startswith("{") and course_set_str.endswith("}"):
-                            course_set_str = course_set_str[1:-1].strip()
-                        if not course_set_str:
-                            current_courses = set()
-                        else:
-                            current_courses = set(
-                                c.strip().strip("'") for c in course_set_str.split(",") if c.strip().strip("'")
+                        try:
+                            course_start = info.find("'Courses':")
+                            if course_start == -1:
+                                print("No courses found for this student.")
+                                break
+                            course_end = info.find("-", course_start)
+                            course_set_str = info[course_start +
+                                                  10:course_end].strip()
+                            # Improved parsing: handle empty set and formatting
+                            if course_set_str.startswith("{") and course_set_str.endswith("}"):
+                                course_set_str = course_set_str[1:-1].strip()
+                            if not course_set_str:
+                                current_courses = set()
+                            else:
+                                current_courses = set(
+                                    c.strip().strip("'") for c in course_set_str.split(",") if c.strip().strip("'")
+                                )
+                            courses_to_remove = input("Which courses: ")
+                            if courses_to_remove.lower().strip() == "e":
+                                break
+                            remove_set = set(
+                                c.strip().title() for c in courses_to_remove.replace(" ", "").split(",") if c.strip()
                             )
-                        courses_to_remove = input("Which courses: ")
-                        if courses_to_remove.lower().strip() == "e":
-                            break
-                        remove_set = set(
-                            c.strip().title() for c in courses_to_remove.replace(" ", "").split(",") if c.strip()
-                        )
-                        updated_courses = current_courses - remove_set
-                        # Format updated_courses as a set string
-                        new_courses_str = "{" + ", ".join(
-                            f"'{c}'" for c in sorted(updated_courses)
-                        ) + "}"
-                        new_info = info[:course_start + 10] + \
-                            new_courses_str + info[course_end:]
-                        all_info_list[idx] = new_info
-                        with open(file_path, "w") as f:
-                            f.writelines(all_info_list)
-                        print(
-                            f"Courses {', '.join(remove_set)} unregistered from ID {id}.")
-
+                            updated_courses = current_courses - remove_set
+                            # Format updated_courses as a set string
+                            new_courses_str = "{" + ", ".join(
+                                f"'{c}'" for c in sorted(updated_courses)
+                            ) + "}"
+                            new_info = info[:course_start + 10] + \
+                                new_courses_str + info[course_end:]
+                            all_info_list[idx] = new_info
+                            with open(file_path, "w") as f:
+                                f.writelines(all_info_list)
+                            print(
+                                f"Courses {', '.join(remove_set)} unregistered from ID {id}.")
+                        except Exception as e:
+                            print("Error processing courses:", e)
                         break
                 if not found:
                     print("ID does not exist.")
