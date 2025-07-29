@@ -33,8 +33,9 @@ A collection of beginner-to-intermediate Python projects that use file input/out
    git clone https://github.com/rayyan-aidev/Python-File_Handling
    cd Python-File_Handling
 2.**Run any script**
+   '''bash
    python note_app.py     # or login.py, course_register.py, etc
-  Make sure you have python 3 installed on your machine.
+**Make sure you have python 3 installed on your machine.**
 
 ---
 
